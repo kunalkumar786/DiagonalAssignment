@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <me.maxdev.popularmoviesapp.ui.ProportionalImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/image_poster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/content_description_movie_poster">
+
+    </me.maxdev.popularmoviesapp.ui.ProportionalImageView>
+<TextView
+    android:layout_width="wrap_content"
+    android:gravity="left"
+    android:id="@+id/tv_title"
+    android:layout_height="wrap_content"></TextView>
+</LinearLayout>
