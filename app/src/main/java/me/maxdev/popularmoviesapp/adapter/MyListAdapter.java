@@ -19,10 +19,12 @@ import java.util.ArrayList;
 import me.maxdev.popularmoviesapp.R;
 import me.maxdev.popularmoviesapp.model.MovieData;
 import me.maxdev.popularmoviesapp.ui.grid.MovieGridItemViewHolder;
+import me.maxdev.popularmoviesapp.util.OnItemClickListener;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
     private ArrayList<MovieData> listdata;
     private Context context;
+    private OnItemClickListener onItemClickListener;
     // RecyclerView recyclerView;
     public MyListAdapter(Context context, ArrayList<MovieData> listdata) {
         this.listdata = listdata;
@@ -124,5 +126,17 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             this.image_poster = (ImageView) itemView.findViewById(R.id.image_poster);
             this.tv_title = (TextView) itemView.findViewById(R.id.tv_title);
         }
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
+    @Override
+    public String toString() {
+        return "MyListAdapter{" +
+                "listdata=" + listdata +
+                ", context=" + context +
+                ", onItemClickListener=" + onItemClickListener +
+                '}';
     }
 }

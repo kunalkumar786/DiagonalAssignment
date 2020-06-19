@@ -2,6 +2,7 @@ package me.maxdev.popularmoviesapp.ui.grid;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +40,7 @@ import me.maxdev.popularmoviesapp.util.OnItemSelectedListener;
 
 public abstract class AbstractMoviesGridFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>,
         OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
-
+private String Tag="AbstractMoviesGridFragment";
     private static final int LOADER_ID = 0;
 
     @BindView(R.id.swipe_layout)
@@ -122,26 +124,29 @@ public abstract class AbstractMoviesGridFragment extends Fragment implements Loa
     }
 
     protected void initMoviesGrid() {
+        View view = getActivity().getWindow().getDecorView();
+        int orientation = getResources().getConfiguration().orientation;
+        if (Configuration.ORIENTATION_LANDSCAPE == orientation) {
+            reinitializeGrid(7);
 
-        myListAdapter=new MyListAdapter(getContext(), parseJsonData());
-        recyclerView.setAdapter(myListAdapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        int columns = getResources().getInteger(R.integer.movies_columns_3);
-        gridLayoutManager = new GridLayoutManager(getActivity(), columns);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        } else {
+            reinitializeGrid(3);
+        }
 
-   /*     adapter = new MoviesAdapter(getContext(), null,parseJsonData());
-        adapter.setOnItemClickListener(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        int columns = getResources().getInteger(R.integer.movies_columns_3);
-        gridLayoutManager = new GridLayoutManager(getActivity(), columns);
-        recyclerView.setLayoutManager(gridLayoutManager);
-   */
         onMoviesGridInitialisationFinished();
 
     }
-public ArrayList<MovieData> parseJsonData(){
+
+
+public void reinitializeGrid(int column){
+    myListAdapter=new MyListAdapter(getContext(), parseJsonData());
+    recyclerView.setAdapter(myListAdapter);
+    recyclerView.setItemAnimator(new DefaultItemAnimator());
+    //int columns = getResources().getInteger(R.integer.movies_columns_3);
+    gridLayoutManager = new GridLayoutManager(getActivity(), column);
+    recyclerView.setLayoutManager(gridLayoutManager);
+}
+    public ArrayList<MovieData> parseJsonData(){
     ArrayList<MovieData> movieData=new ArrayList<>();
         try{
             JSONObject jsonObject=new JSONObject(loadFirstFromAsset());

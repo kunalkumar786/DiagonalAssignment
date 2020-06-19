@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1083004907584",
+    "firebase_url": "https://popularmoviesapp-1ad68.firebaseio.com",
+    "project_id": "popularmoviesapp-1ad68",
+    "storage_bucket": "popularmoviesapp-1ad68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083004907584:android:14f10f75ea708df92defa5",
+        "android_client_info": {
+          "package_name": "me.maxdev.popularmoviesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1083004907584-1mo035mkm7o4k2iik4vhheos9lvqui9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcPhQJzpCAay-1o64k8xCnUMnW0LUnAmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1083004907584-1mo035mkm7o4k2iik4vhheos9lvqui9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
